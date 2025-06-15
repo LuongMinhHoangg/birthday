@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>생일 축하해요!</title>
+  <link rel="stylesheet" href="birthday.css">
+</head>
+
+
+<body>
+  <audio id="bgMusic" loop>
+    <source src="happy-birthday-254480.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  </audio>
+  <canvas id="fireworks"></canvas>
+
+  <div class="container">
+    <h2>🎂 사랑하는 당신의 생일을 축하해요 🎂</h2>
+
+    <!-- Slideshow giữa -->
+    <div class="slideshow">
+      <img src="img1.jpg" class="active" alt="Ảnh 1">
+      <img src="img2.jpg" alt="Ảnh 2">
+      <img src="img3.jpg" alt="Ảnh 3">
+      <img src="img4.jpg" alt="Ảnh 4">
+    </div>
+
+    <!-- Đồng hồ đếm -->
+    <div class="time-box">
+      <div><span id="days">000</span><small>일</small></div>
+      <div><span id="hours">00</span><small>시간</small></div>
+      <div><span id="minutes">00</span><small>분</small></div>
+      <div><span id="seconds">00</span><small>초</small></div>
+    </div>
+
+    <!-- Nút lời chúc -->
+    <button class="wish-btn" onclick="showPopup()">💌 오빠에게 보내는 편지 💌</button>
+
+  </div>
+
+  <!-- Popup -->
+  <!-- Popup -->
+  <div class="popup" id="wishPopup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <p id="typing-message" class="message"></p>
+      <button class="cake-btn">🎂</button>
+    </div>
+  </div>
+
+
+  <script src="birthday.js"></script>
+  <script src="fireworks.js"></script>
+</body>
+
+</html>

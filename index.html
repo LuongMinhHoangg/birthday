@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="card horizontal">
+      <div class="left-section">
+        <img src="indeximg.jpg" alt="Couple" class="photo">
+      </div>
+
+      <div class="right-section lock-box">
+        <div class="display" id="display">🔒 비밀번호를 입력해주세요</div>
+
+        <div class="keypad">
+          <button class="key">1</button>
+          <button class="key">2</button>
+          <button class="key">3</button>
+          <button class="key">4</button>
+          <button class="key">5</button>
+          <button class="key">6</button>
+          <button class="key">7</button>
+          <button class="key">8</button>
+          <button class="key">9</button>
+          <button class="key">*</button>
+          <button class="key">0</button>
+          <button class="key">#</button>
+        </div>
+
+        <button id="submitBtn" class="submit">✔ OK</button>
+        <p id="message" class="message"></p>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  const display = document.getElementById('display');
+  const keypad = document.querySelectorAll('.key');
+  const submitBtn = document.getElementById('submitBtn');
+  const message = document.getElementById('message');
+
+  let password = '';
+  const correctPassword = '0618'; // Phải là chuỗi
+
+  const defaultText = '🔒 비밀번호를 입력해주세요';
+  display.textContent = defaultText;
+
+  // Nhấn từng phím
+  keypad.forEach(key => {
+    key.addEventListener('click', () => {
+      if (password.length < 10) {
+        password += key.textContent;
+        display.textContent = '*'.repeat(password.length);
+        message.textContent = '';
+      }
+    });
+  });
+
+  // Khi nhấn OK
+  submitBtn.addEventListener('click', () => {
+    if (password === correctPassword) {
+      display.textContent = '🎉 그 사람은 정말 사랑을 잘해';
+      message.textContent = '생일 축하해요  🎂🎈';
+      message.style.color = '#28a745';
+
+      // Chuyển trang sau 1.5 giây
+      setTimeout(() => {
+        window.location.href = 'birthday.html'; // 👉 Thay bằng trang bạn muốn
+      }, 1500);
+    } else {
+      display.textContent = '❌ 틀렸어, 허니';
+      message.textContent = '여보 다시 시도해봐';
+      message.style.color = '#dc3545';
+
+      // Reset sau 1.5 giây
+      setTimeout(() => {
+        password = '';
+        display.textContent = defaultText;
+        message.textContent = '';
+      }, 2000);
+    }
+  });
+</script>
+
+
+
+</html>
